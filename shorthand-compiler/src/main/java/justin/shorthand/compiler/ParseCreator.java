@@ -28,7 +28,7 @@ import static javax.lang.model.element.Modifier.PUBLIC;
  * @author justin on 2017/02/16 14:37
  * @version V1.0
  */
-public class ParseCreator implements IObjectParse {
+public class ParseCreator {
     private static final String ParameterJsonObject = "jsonObject";
     private static final TypeName JSONObject = ClassName.get("org.json", "JSONObject");
     private static final TypeName JSONException = ClassName.get("org.json", "JSONException");
@@ -142,35 +142,30 @@ public class ParseCreator implements IObjectParse {
         }
     }
 
-    @Override
     public CodeBlock parseInt(ExecutableElement setter, String keyName, boolean isWrapper) {
         StringBuilder code = new StringBuilder();
         code.append("Integer $L = $L.optInt(\"$L\");\n");
         return parseValue(code, setter, keyName, isWrapper);
     }
 
-    @Override
     public CodeBlock parseBoolean(ExecutableElement setter, String keyName, boolean isWrapper) {
         StringBuilder code = new StringBuilder();
         code.append("Boolean $L = $L.optBoolean(\"$L\");\n");
         return parseValue(code, setter, keyName, isWrapper);
     }
 
-    @Override
     public CodeBlock parseDouble(ExecutableElement setter, String keyName, boolean isWrapper) {
         StringBuilder code = new StringBuilder();
         code.append("Double $L = $L.optDouble(\"$L\");\n");
         return parseValue(code, setter, keyName, isWrapper);
     }
 
-    @Override
     public CodeBlock parseLong(ExecutableElement setter, String keyName, boolean isWrapper) {
         StringBuilder code = new StringBuilder();
         code.append("Long $L = $L.optLong(\"$L\");\n");
         return parseValue(code, setter, keyName, isWrapper);
     }
 
-    @Override
     public CodeBlock parseString(ExecutableElement setter, String keyName) {
         StringBuilder code = new StringBuilder();
         code.append("String $L = $L.optString(\"$L\");\n");
